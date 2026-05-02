@@ -1,4 +1,5 @@
-const KIMI_API_URL = '/v1'
+const IS_PROD = import.meta.env.PROD
+const KIMI_API_URL = IS_PROD ? 'https://api.moonshot.ai/v1' : '/v1'
 
 export type KimiAnalysisResult = {
   foodName: string
