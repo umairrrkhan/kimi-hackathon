@@ -78,7 +78,7 @@ export function generateSimulation(
     })
   }
 
-  const organStress = calculateOrganStress(foodName, profile, glycemicIndex, carbLoad)
+  const organStress = calculateOrganStress(foodName, profile, glycemicIndex, carbLoad, kimiData)
 
   const prediction = generatePrediction(
     foodName,
@@ -195,22 +195,39 @@ function calculateOrganStress(
   food: string,
   profile: UserProfile | null,
   glycemicIndex: number,
-  carbLoad: number
+  carbLoad: number,
+  kimiData?: KimiAnalysisResult
 ) {
   const lowered = food.toLowerCase()
-  const isProcessed = ['pizza', 'burger', 'fries', 'candy', 'soda', 'chips', 'cake', 'cookie', 'noodle', 'instant'].some((f) =>
-    lowered.includes(f)
-  )
-  const isHighFat = ['burger', 'pizza', 'fries', 'bacon', 'butter', 'cream', 'fried', 'oil'].some((f) =>
-    lowered.includes(f)
-  )
-  const isHighSugar = ['candy', 'soda', 'cake', 'cookie', 'sugar', 'donut', 'chocolate', 'ice cream'].some((f) =>
-    lowered.includes(f)
-  )
-  const isAlcohol = ['beer', 'wine', 'whiskey', 'vodka', 'rum', 'gin', 'alcohol'].some((f) => lowered.includes(f))
-  const isHighSalt = ['fries', 'chips', 'pizza', 'burger', 'soup', 'sauce', 'pickle', 'cured'].some((f) =>
-    lowered.includes(f)
-  )
+
+  let isProcessed: boolean
+  let isHighFat: boolean
+  let isHighSugar: boolean
+  let isAlcohol: boolean
+  let isHighSalt: boolean
+
+  if (kimiData) {
+    const calPerGram = kimiData.estimatedCalories / (kimiData.estimatedCarbs + kimiData.estimatedProtein + kimiData.estimatedFat + 1)
+    const fatRatio = kimiData.estimatedFat / (kimiData.estimatedCarbs + kimiData.estimatedProtein + kimiData.estimatedFat + 1)
+    const carbRatio = kimiData.estimatedCarbs / (kimiData.estimatedCarbs + kimiData.estimatedProtein + kimiData.estimatedFat + 1)
+    const sugarKeywords = ['sugar', 'syrup', 'sweet', 'candy', 'soda', 'chocolate', 'dessert', 'cake', 'cookie', 'ice cream']
+    const processedKeywords = ['processed', 'instant', 'frozen', 'fast food', 'junk', 'packaged', 'soda', 'chips', 'candy', 'sausage', 'noodle']
+
+    const desc = (kimiData.description || '').toLowerCase()
+    const name = (kimiData.foodName || '').toLowerCase()
+
+    isHighFat = fatRatio > 0.35 || ['burger', 'pizza', 'fries', 'bacon', 'fried', 'butter', 'cheese'].some((f) => name.includes(f) || lowered.includes(f))
+    isHighSugar = carbRatio > 0.5 || sugarKeywords.some((f) => name.includes(f) || lowered.includes(f) || desc.includes(f))
+    isProcessed = calPerGram > 3 || processedKeywords.some((f) => name.includes(f) || desc.includes(f))
+    isAlcohol = ['beer', 'wine', 'whiskey', 'vodka', 'rum', 'gin', 'alcohol', 'liquor'].some((f) => name.includes(f) || lowered.includes(f))
+    isHighSalt = calPerGram > 2.5 && !isHighSugar && !isHighFat
+  } else {
+    isProcessed = ['pizza', 'burger', 'fries', 'candy', 'soda', 'chips', 'cake', 'cookie', 'noodle', 'instant'].some((f) => lowered.includes(f))
+    isHighFat = ['burger', 'pizza', 'fries', 'bacon', 'butter', 'cream', 'fried', 'oil'].some((f) => lowered.includes(f))
+    isHighSugar = ['candy', 'soda', 'cake', 'cookie', 'sugar', 'donut', 'chocolate', 'ice cream'].some((f) => lowered.includes(f))
+    isAlcohol = ['beer', 'wine', 'whiskey', 'vodka', 'rum', 'gin', 'alcohol'].some((f) => lowered.includes(f))
+    isHighSalt = ['fries', 'chips', 'pizza', 'burger', 'soup', 'sauce', 'pickle', 'cured'].some((f) => lowered.includes(f))
+  }
 
   const ageMod = profile ? Math.min(1, profile.age / 80) : 0.5
   const bmiMod = profile

@@ -5,7 +5,6 @@ import { useDropzone } from 'react-dropzone'
 import { analyzeFoodImage, type KimiAnalysisResult } from '../services/kimiApi'
 import { generateSimulation } from '../services/simulationEngine'
 import { useSimulationStore } from '../store/simulationStore'
-import AgentsLoader from '../components/AgentsLoader'
 
 const btnBase: React.CSSProperties = {
   padding: '10px 22px',
@@ -73,7 +72,7 @@ export default function Analyze() {
           setAnalysisResult(result)
           setCurrentFood(result.foodName)
           setDetectedFood(result.foodName)
-          setStage('analyzing')
+          setStage('complete')
         } catch (err) {
           handleError(err instanceof Error ? err.message : 'Analysis failed. Check your connection.')
         }
@@ -100,26 +99,32 @@ export default function Analyze() {
       setAnalysisResult(null)
       setCurrentFood(manualFood)
       setDetectedFood(manualFood)
-      await new Promise((r) => setTimeout(r, 500))
-      setStage('analyzing')
+      setAnalysisResult({
+        foodName: manualFood,
+        description: `Manual entry: ${manualFood}`,
+        estimatedCalories: 0,
+        estimatedCarbs: 0,
+        estimatedProtein: 0,
+        estimatedFat: 0,
+        nutrients: [],
+        rawMarkdown: `Manual food entry: ${manualFood}`,
+      })
+      setStage('complete')
     } catch (err) {
       handleError('Analysis failed. Please try again.')
     }
   }
 
-  const handleAgentsComplete = () => {
-    setStage('complete')
+  const handleViewSimulation = () => {
     if (analysisResult || detectedFood) {
-      const sim = generateSimulation(detectedFood, profile, analysisResult?.rawMarkdown)
+      const hasRealData = analysisResult && analysisResult.estimatedCalories > 0
+      const sim = generateSimulation(detectedFood, profile, analysisResult?.rawMarkdown, hasRealData ? analysisResult : undefined)
       setResult(sim)
+      navigate('/simulation')
     }
   }
 
   const rightPanel = () => {
-    if (stage === 'analyzing') {
-      return <AgentsLoader onComplete={handleAgentsComplete} />
-    }
-
     if (stage === 'uploading') {
       return (
         <div style={{ ...cardStyle, minHeight: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
@@ -135,9 +140,19 @@ export default function Analyze() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', flex: 1 }}>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '4px' }}>
-                <h3 style={{ fontSize: '16px', fontWeight: 600 }}>{analysisResult.foodName}</h3>
+                <div style={{
+                  padding: '2px 8px', borderRadius: '6px', fontSize: '10px', fontWeight: 700,
+                  background: 'rgba(52,211,153,0.1)', color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.5px',
+                }}>
+                  Kimi AI Result
+                </div>
               </div>
-              <p style={{ fontSize: '11px', color: 'var(--text-muted)' }}>AI Analysis Complete</p>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, marginTop: '8px' }}>{analysisResult.foodName}</h3>
+              {analysisResult.description && (
+                <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px', lineHeight: 1.6 }}>
+                  {analysisResult.description}
+                </p>
+              )}
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
               {[
@@ -159,37 +174,40 @@ export default function Analyze() {
                 </div>
               ))}
             </div>
-            <div style={{
-              background: 'rgba(245,158,11,0.04)',
-              border: '1px solid rgba(245,158,11,0.06)',
-              borderRadius: '10px',
-              padding: '12px',
-            }}>
-              <p style={{ fontSize: '11px', color: 'var(--text-muted)', marginBottom: '6px' }}>Key Nutrients</p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
-                {analysisResult.nutrients.map((n) => (
-                  <span key={n} style={{
-                    padding: '3px 8px',
-                    borderRadius: '6px',
-                    fontSize: '11px',
-                    background: 'rgba(245,158,11,0.08)',
-                    color: 'var(--accent-light)',
-                  }}>
-                    {n}
-                  </span>
-                ))}
+            {analysisResult.nutrients.length > 0 && (
+              <div style={{
+                background: 'rgba(245,158,11,0.04)',
+                border: '1px solid rgba(245,158,11,0.06)',
+                borderRadius: '10px',
+                padding: '12px',
+              }}>
+                <p style={{ fontSize: '11px', color: 'var(--text-muted)', marginBottom: '6px' }}>Key Nutrients</p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                  {analysisResult.nutrients.map((n) => (
+                    <span key={n} style={{
+                      padding: '3px 8px',
+                      borderRadius: '6px',
+                      fontSize: '11px',
+                      background: 'rgba(245,158,11,0.08)',
+                      color: 'var(--accent-light)',
+                    }}>
+                      {n}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
             <div style={{ flex: 1 }} />
             <button
-              onClick={() => navigate('/simulation')}
+              onClick={handleViewSimulation}
               style={{
                 ...btnBase,
                 padding: '12px',
                 width: '100%',
                 background: 'linear-gradient(135deg, #f59e0b, #d97706)',
-                color: '#fff',
+                color: '#000',
                 fontSize: '14px',
+                fontWeight: 700,
               }}
             >
               View Full Simulation →
