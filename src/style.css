@@ -82,3 +82,22 @@ body {
 @media (min-width: 640px) {
   .show-sm { display: block !important; }
 }
+
+/* ─── Mobile Responsive ─── */
+@media (max-width: 768px) {
+  header nav > a { display: none !important; }
+  header nav > button { display: block !important; }
+
+  section { padding-left: 16px !important; padding-right: 16px !important; }
+
+  h1 { word-break: break-word; }
+
+  [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body { font-size: 14px; }
+  [style*="padding"] { box-sizing: border-box; }
+}
