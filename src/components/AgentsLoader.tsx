@@ -6,13 +6,13 @@ const DEFAULT_AGENTS = [
     id: 'recognition',
     label: 'Food Recognition Agent',
     desc: 'Identifying food and calculating nutritional values',
-    color: '#a855f7',
+    color: '#f59e0b',
   },
   {
     id: 'biological',
     label: 'Biological Analysis Agent',
     desc: 'Analyzing metabolic impact and organ response',
-    color: '#6366f1',
+    color: '#d97706',
   },
 ]
 

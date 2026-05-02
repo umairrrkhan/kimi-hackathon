@@ -21,7 +21,7 @@ const cardStyle: React.CSSProperties = {
 }
 
 const gradientTextStyle: React.CSSProperties = {
-  background: 'linear-gradient(135deg, #a855f7, #6366f1)',
+  background: 'linear-gradient(135deg, #f59e0b, #d97706)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
@@ -35,13 +35,13 @@ const btnPrimaryStyle: React.CSSProperties = {
   borderRadius: '14px',
   fontSize: '15px',
   fontWeight: 600,
-  color: '#fff',
+  color: '#000',
   textDecoration: 'none',
-  background: 'linear-gradient(135deg, #a855f7, #7c3aed)',
+  background: 'linear-gradient(135deg, #f59e0b, #d97706)',
   border: 'none',
   cursor: 'pointer',
   transition: 'all 0.25s ease',
-  boxShadow: '0 4px 24px rgba(168,85,247,0.25)',
+  boxShadow: '0 4px 24px rgba(245,158,11,0.25)',
 }
 
 const features = [
@@ -50,6 +50,14 @@ const features = [
   { icon: '◇', title: 'What-If Lab', desc: 'Compare scenarios: same meal post-workout vs sleep-deprived. How does context change the outcome?', path: '/what-if' },
   { icon: '🧬', title: 'Genetic Integration', desc: 'Upload raw genetic data (FTO, APOE, TCF7L2) and see how your DNA modulates every metabolic response.', path: '/genetics' },
 ]
+
+const asciiLogo = `
+   ___________    __  __
+  / ____/ ___/   / / / /__  __________
+ / /    \\__ \\   / /_/ / _ \\/ ___/ ___/
+/ /___ ___/ /  / __  /  __/ /  (__  )
+\\____//____/  /_/ /_/\\___/_/  /____/
+`
 
 export default function Home() {
   return (
@@ -72,7 +80,7 @@ export default function Home() {
             position: 'absolute',
             inset: 0,
             pointerEvents: 'none',
-            background: 'radial-gradient(ellipse at 50% 0%, rgba(168,85,247,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(99,102,241,0.04) 0%, transparent 50%)',
+            background: 'radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.06) 0%, transparent 50%)',
           }}
         />
         <motion.div
@@ -81,6 +89,16 @@ export default function Home() {
           transition={{ duration: 0.6 }}
           style={{ maxWidth: '720px', position: 'relative', zIndex: 1 }}
         >
+          <pre style={{
+            fontSize: '7px',
+            lineHeight: 1.2,
+            color: 'var(--accent)',
+            opacity: 0.5,
+            marginBottom: '16px',
+            userSelect: 'none',
+          }}>
+{asciiLogo}
+          </pre>
           <div
             style={{
               display: 'inline-flex',
@@ -91,8 +109,8 @@ export default function Home() {
               fontSize: '12px',
               fontWeight: 500,
               color: 'var(--accent-light)',
-              background: 'rgba(168,85,247,0.08)',
-              border: '1px solid rgba(168,85,247,0.12)',
+              background: 'rgba(245,158,11,0.08)',
+              border: '1px solid rgba(245,158,11,0.12)',
               marginBottom: '24px',
             }}
           >
@@ -108,9 +126,9 @@ export default function Home() {
               marginBottom: '20px',
             }}
           >
-            <span style={{ color: 'var(--text-primary)' }}>What The Food</span>
+            <span style={{ color: 'var(--text-primary)' }}>Check Health</span>
             <br />
-            <span style={gradientTextStyle}>Does To Your Body</span>
+            <span style={gradientTextStyle}>AI</span>
           </h1>
           <p
             style={{
@@ -132,10 +150,10 @@ export default function Home() {
               to="/simulation"
               style={{
                 ...btnPrimaryStyle,
+                color: '#000',
                 background: 'transparent',
-                color: 'var(--accent-light)',
                 boxShadow: 'none',
-                border: '1px solid rgba(168,85,247,0.25)',
+                border: '1px solid rgba(245,158,11,0.25)',
               }}
             >
               View Demo
@@ -143,6 +161,13 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
+
+      {/* ASCII Divider */}
+      <div style={{ textAlign: 'center', padding: '0 16px', color: 'var(--text-muted)', opacity: 0.15, fontSize: '10px', userSelect: 'none' }}>
+        <pre style={{ margin: 0 }}>
+{`══════════════════════════════════════`}
+        </pre>
+      </div>
 
       {/* Features */}
       <section style={sectionStyle}>
@@ -199,10 +224,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ASCII Divider */}
+      <div style={{ textAlign: 'center', padding: '0 16px', color: 'var(--text-muted)', opacity: 0.15, fontSize: '10px', userSelect: 'none' }}>
+        <pre style={{ margin: 0 }}>
+{`══════════════════════════════════════`}
+        </pre>
+      </div>
+
       {/* CTA */}
       <section style={{ ...sectionStyle, borderBottom: 'none', textAlign: 'center' }}>
         <div style={containerStyle}>
           <div style={{ maxWidth: '500px', margin: '0 auto' }}>
+            <motion.pre
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              style={{
+                fontSize: '7px',
+                lineHeight: 1.2,
+                color: 'var(--accent)',
+                opacity: 0.3,
+                marginBottom: '16px',
+                userSelect: 'none',
+              }}
+            >
+{`  _  _    ___    __  __
+ | || |  / _ \\  |  \\/  |
+ | || |_| | | | | |\\/| |
+ |__   _| |_| | | |  | |
+    |_|  \\___/  |_|  |_|`}
+            </motion.pre>
             <motion.h2
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}

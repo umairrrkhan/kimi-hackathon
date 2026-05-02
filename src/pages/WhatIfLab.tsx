@@ -115,8 +115,8 @@ export default function WhatIfLab() {
                     padding: '4px 10px',
                     borderRadius: '6px',
                     fontSize: '11px',
-                    border: `1px solid ${food === f ? 'rgba(168,85,247,0.2)' : 'var(--border-subtle)'}`,
-                    background: food === f ? 'rgba(168,85,247,0.08)' : 'rgba(255,255,255,0.02)',
+                    border: `1px solid ${food === f ? 'rgba(245,158,11,0.2)' : 'var(--border-subtle)'}`,
+                    background: food === f ? 'rgba(245,158,11,0.08)' : 'rgba(255,255,255,0.02)',
                     color: food === f ? 'var(--accent-light)' : 'var(--text-muted)',
                     cursor: 'pointer',
                     transition: 'all 0.15s',
@@ -139,8 +139,8 @@ export default function WhatIfLab() {
                     textAlign: 'left',
                     padding: '10px 14px',
                     borderRadius: '10px',
-                    border: `1px solid ${selected.includes(s.id) ? 'rgba(168,85,247,0.15)' : 'transparent'}`,
-                    background: selected.includes(s.id) ? 'rgba(168,85,247,0.06)' : 'transparent',
+                    border: `1px solid ${selected.includes(s.id) ? 'rgba(245,158,11,0.15)' : 'transparent'}`,
+                    background: selected.includes(s.id) ? 'rgba(245,158,11,0.06)' : 'transparent',
                     cursor: 'pointer',
                     transition: 'all 0.15s',
                     color: selected.includes(s.id) ? 'var(--accent-light)' : 'var(--text-secondary)',
@@ -166,7 +166,7 @@ export default function WhatIfLab() {
               color: '#fff',
               border: 'none',
               cursor: (!food.trim() || selected.length === 0 || isLoading) ? 'not-allowed' : 'pointer',
-              background: 'linear-gradient(135deg, #a855f7, #7c3aed)',
+              background: 'linear-gradient(135deg, #f59e0b, #d97706)',
               opacity: (!food.trim() || selected.length === 0 || isLoading) ? 0.4 : 1,
               transition: 'all 0.2s',
             }}
@@ -193,19 +193,19 @@ export default function WhatIfLab() {
                 </span>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
-                <div style={{ textAlign: 'center', padding: '8px', borderRadius: '8px', background: 'rgba(168,85,247,0.04)' }}>
+                <div style={{ textAlign: 'center', padding: '8px', borderRadius: '8px', background: 'rgba(245,158,11,0.04)' }}>
                   <div style={{ fontSize: '16px', fontWeight: 700 }}>{kimiData.estimatedCalories}</div>
                   <div style={{ fontSize: '10px', color: 'var(--text-muted)' }}>kcal</div>
                 </div>
-                <div style={{ textAlign: 'center', padding: '8px', borderRadius: '8px', background: 'rgba(168,85,247,0.04)' }}>
+                <div style={{ textAlign: 'center', padding: '8px', borderRadius: '8px', background: 'rgba(245,158,11,0.04)' }}>
                   <div style={{ fontSize: '16px', fontWeight: 700 }}>{kimiData.estimatedCarbs}g</div>
                   <div style={{ fontSize: '10px', color: 'var(--text-muted)' }}>Carbs</div>
                 </div>
-                <div style={{ textAlign: 'center', padding: '8px', borderRadius: '8px', background: 'rgba(168,85,247,0.04)' }}>
+                <div style={{ textAlign: 'center', padding: '8px', borderRadius: '8px', background: 'rgba(245,158,11,0.04)' }}>
                   <div style={{ fontSize: '16px', fontWeight: 700 }}>{kimiData.estimatedProtein}g</div>
                   <div style={{ fontSize: '10px', color: 'var(--text-muted)' }}>Protein</div>
                 </div>
-                <div style={{ textAlign: 'center', padding: '8px', borderRadius: '8px', background: 'rgba(168,85,247,0.04)' }}>
+                <div style={{ textAlign: 'center', padding: '8px', borderRadius: '8px', background: 'rgba(245,158,11,0.04)' }}>
                   <div style={{ fontSize: '16px', fontWeight: 700 }}>{kimiData.estimatedFat}g</div>
                   <div style={{ fontSize: '10px', color: 'var(--text-muted)' }}>Fat</div>
                 </div>
@@ -254,7 +254,7 @@ export default function WhatIfLab() {
                       </div>
                       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                         <span style={{ color: 'var(--text-muted)' }}>Avg Stress</span>
-                        <span style={{ color: '#a855f7', fontWeight: 600 }}>{avgStress}%</span>
+                        <span style={{ color: '#f59e0b', fontWeight: 600 }}>{avgStress}%</span>
                       </div>
                       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                         <span style={{ color: 'var(--text-muted)' }}>Brain Fog</span>

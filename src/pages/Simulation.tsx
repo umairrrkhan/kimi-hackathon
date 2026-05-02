@@ -117,7 +117,7 @@ export default function Simulation() {
             display: 'inline-flex', alignItems: 'center', gap: '6px',
             padding: '12px 24px', borderRadius: '12px', fontSize: '14px', fontWeight: 600,
             color: '#fff', textDecoration: 'none',
-            background: 'linear-gradient(135deg, #a855f7, #7c3aed)',
+            background: 'linear-gradient(135deg, #f59e0b, #d97706)',
           }}>
             Analyze Food →
           </Link>
@@ -150,8 +150,8 @@ export default function Simulation() {
               borderRadius: '6px',
               fontSize: '13px',
               fontWeight: 600,
-              background: 'rgba(168,85,247,0.08)',
-              border: '1px solid rgba(168,85,247,0.12)',
+              background: 'rgba(245,158,11,0.08)',
+              border: '1px solid rgba(245,158,11,0.12)',
               color: 'var(--accent-light)',
             }}>
               {currentFood || 'Unknown'}
@@ -167,14 +167,14 @@ export default function Simulation() {
           <Link to="/analyze" style={{
             padding: '8px 16px', borderRadius: '10px', fontSize: '12px', fontWeight: 500,
             color: 'var(--accent-light)', textDecoration: 'none',
-            border: '1px solid rgba(168,85,247,0.15)', background: 'rgba(168,85,247,0.04)',
+            border: '1px solid rgba(245,158,11,0.15)', background: 'rgba(245,158,11,0.04)',
           }}>
             New Analysis
           </Link>
           <Link to="/what-if" style={{
             padding: '8px 16px', borderRadius: '10px', fontSize: '12px', fontWeight: 500,
             color: 'var(--accent-light)', textDecoration: 'none',
-            border: '1px solid rgba(168,85,247,0.15)', background: 'rgba(168,85,247,0.04)',
+            border: '1px solid rgba(245,158,11,0.15)', background: 'rgba(245,158,11,0.04)',
           }}>
             What-If →
           </Link>
@@ -249,7 +249,7 @@ export default function Simulation() {
             />
             <PredictionCard
               title="Overall Stress"
-              color="#a855f7"
+              color="#f59e0b"
               items={[
                 { label: 'Highest Organ', value: result.organStress.reduce((a, b) => a.stress > b.stress ? a : b).organ },
                 { label: 'Max Stress', value: `${maxStress}%`, color: maxStress > 60 ? '#ef4444' : '#34d399' },

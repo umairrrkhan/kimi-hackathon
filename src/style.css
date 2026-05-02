@@ -7,15 +7,15 @@
   --bg-card: #1a1a1a;
   --bg-elevated: #222222;
   --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-accent: rgba(168, 85, 247, 0.15);
+  --border-accent: rgba(245, 158, 11, 0.15);
   --text-primary: #f5f5f5;
   --text-secondary: #a1a1aa;
   --text-muted: #71717a;
-  --accent: #a855f7;
-  --accent-light: #c084fc;
-  --accent-dark: #7c3aed;
-  --accent-glow: rgba(168, 85, 247, 0.15);
-  --indigo: #6366f1;
+  --accent: #f59e0b;
+  --accent-light: #fbbf24;
+  --accent-dark: #d97706;
+  --accent-glow: rgba(245, 158, 11, 0.15);
+  --indigo: #f59e0b;
   --red: #ef4444;
   --amber: #f59e0b;
   --cyan: #06b6d4;
@@ -61,7 +61,7 @@ body {
 }
 
 ::selection {
-  background: rgba(168, 85, 247, 0.3);
+  background: rgba(245, 158, 11, 0.3);
   color: #fff;
 }
 

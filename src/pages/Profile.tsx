@@ -146,7 +146,7 @@ export default function Profile() {
                     color: '#fff',
                     border: 'none',
                     cursor: 'pointer',
-                    background: 'linear-gradient(135deg, #a855f7, #7c3aed)',
+                    background: 'linear-gradient(135deg, #f59e0b, #d97706)',
                   }}
                 >
                   Export PDF
@@ -159,8 +159,8 @@ export default function Profile() {
                 <div style={{
                   padding: '12px',
                   borderRadius: '10px',
-                  background: 'rgba(168,85,247,0.04)',
-                  border: '1px solid rgba(168,85,247,0.06)',
+                  background: 'rgba(245,158,11,0.04)',
+                  border: '1px solid rgba(245,158,11,0.06)',
                 }}>
                   <div style={{ fontSize: '18px', fontWeight: 700 }}>{currentFood}</div>
                   <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{new Date().toLocaleDateString()}</div>

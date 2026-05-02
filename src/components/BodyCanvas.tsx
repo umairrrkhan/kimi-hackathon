@@ -79,7 +79,7 @@ function BodySilhouette() {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[points, 3]} count={points.length / 3} />
       </bufferGeometry>
-      <lineBasicMaterial color="#a855f7" opacity={0.06} transparent />
+      <lineBasicMaterial color="#f59e0b" opacity={0.06} transparent />
     </line>
   )
 }
@@ -125,7 +125,7 @@ function ConnectionLines({ result }: { result: SimulationResult | null }) {
             count={centerLines.length / 3}
           />
         </bufferGeometry>
-        <lineBasicMaterial color="#a855f7" opacity={0.12} transparent />
+        <lineBasicMaterial color="#f59e0b" opacity={0.12} transparent />
       </line>
       <line>
         <bufferGeometry ref={lineRef2}>
@@ -156,11 +156,11 @@ function Rings() {
     <group>
       <mesh ref={innerRef} rotation={[-Math.PI / 2.2, 0, 0]} position={[0, 0, 0]}>
         <ringGeometry args={[0.25, 0.3, 48]} />
-        <meshBasicMaterial color="#a855f7" transparent opacity={0.2} side={THREE.DoubleSide} />
+        <meshBasicMaterial color="#f59e0b" transparent opacity={0.2} side={THREE.DoubleSide} />
       </mesh>
       <mesh ref={outerRef} position={[0, 0, 0]}>
         <ringGeometry args={[0.55, 0.57, 48]} />
-        <meshBasicMaterial color="#a855f7" transparent opacity={0.08} side={THREE.DoubleSide} />
+        <meshBasicMaterial color="#f59e0b" transparent opacity={0.08} side={THREE.DoubleSide} />
       </mesh>
       <mesh ref={outerRef2} position={[0, 0.05, 0]} rotation={[0.3, 0, 0]}>
         <ringGeometry args={[0.45, 0.47, 48]} />
@@ -213,7 +213,7 @@ function EnergyRing({ result }: { result: SimulationResult | null }) {
           count={points.length}
         />
       </bufferGeometry>
-      <lineBasicMaterial color="#a855f7" opacity={0.15} transparent />
+      <lineBasicMaterial color="#f59e0b" opacity={0.15} transparent />
     </line>
   )
 }
@@ -238,7 +238,7 @@ function Dots() {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} count={count} />
       </bufferGeometry>
-      <pointsMaterial size={0.006} color="#a855f7" transparent opacity={0.15} sizeAttenuation />
+      <pointsMaterial size={0.006} color="#f59e0b" transparent opacity={0.15} sizeAttenuation />
     </points>
   )
 }

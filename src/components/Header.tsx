@@ -19,8 +19,8 @@ const linkStyle = (isActive: boolean): React.CSSProperties => ({
   padding: '6px 14px',
   borderRadius: '10px',
   transition: 'all 0.2s',
-  background: isActive ? 'rgba(168,85,247,0.1)' : 'transparent',
-  border: isActive ? '1px solid rgba(168,85,247,0.15)' : '1px solid transparent',
+  background: isActive ? 'rgba(245,158,11,0.1)' : 'transparent',
+  border: isActive ? '1px solid rgba(245,158,11,0.15)' : '1px solid transparent',
   letterSpacing: '0.01em',
 })
 
@@ -58,7 +58,7 @@ export default function Header() {
           background: 'rgba(8, 8, 12, 0.78)',
           backdropFilter: 'blur(26px) saturate(1.5)',
           WebkitBackdropFilter: 'blur(26px) saturate(1.5)',
-          border: '1px solid rgba(168, 85, 247, 0.1)',
+          border: '1px solid rgba(245, 158, 11, 0.08)',
           boxShadow: '0 8px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04)',
         }}
       >
@@ -76,12 +76,12 @@ export default function Header() {
               fontSize: '22px',
               fontWeight: 800,
               letterSpacing: '-0.5px',
-              background: 'linear-gradient(135deg, #a855f7, #6366f1)',
+              background: 'linear-gradient(135deg, #f59e0b, #d97706)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}
           >
-            WTF
+            CH
           </span>
           <span
             className="show-sm"
@@ -92,7 +92,7 @@ export default function Header() {
               display: 'none',
             }}
           >
-            What The Food
+            Check Health
           </span>
         </Link>
 

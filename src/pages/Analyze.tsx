@@ -147,8 +147,8 @@ export default function Analyze() {
                 { label: 'Fat', value: `${analysisResult.estimatedFat}`, unit: 'g' },
               ].map((item) => (
                 <div key={item.label} style={{
-                  background: 'rgba(168,85,247,0.04)',
-                  border: '1px solid rgba(168,85,247,0.06)',
+                  background: 'rgba(245,158,11,0.04)',
+                  border: '1px solid rgba(245,158,11,0.06)',
                   borderRadius: '10px',
                   padding: '12px',
                   textAlign: 'center',
@@ -160,8 +160,8 @@ export default function Analyze() {
               ))}
             </div>
             <div style={{
-              background: 'rgba(99,102,241,0.04)',
-              border: '1px solid rgba(99,102,241,0.06)',
+              background: 'rgba(245,158,11,0.04)',
+              border: '1px solid rgba(245,158,11,0.06)',
               borderRadius: '10px',
               padding: '12px',
             }}>
@@ -172,7 +172,7 @@ export default function Analyze() {
                     padding: '3px 8px',
                     borderRadius: '6px',
                     fontSize: '11px',
-                    background: 'rgba(168,85,247,0.08)',
+                    background: 'rgba(245,158,11,0.08)',
                     color: 'var(--accent-light)',
                   }}>
                     {n}
@@ -187,7 +187,7 @@ export default function Analyze() {
                 ...btnBase,
                 padding: '12px',
                 width: '100%',
-                background: 'linear-gradient(135deg, #a855f7, #7c3aed)',
+                background: 'linear-gradient(135deg, #f59e0b, #d97706)',
                 color: '#fff',
                 fontSize: '14px',
               }}
@@ -209,7 +209,7 @@ export default function Analyze() {
             style={{
               ...btnBase,
               padding: '10px 20px',
-              background: 'linear-gradient(135deg, #a855f7, #7c3aed)',
+              background: 'linear-gradient(135deg, #f59e0b, #d97706)',
               color: '#fff',
               fontSize: '13px',
             }}
@@ -254,8 +254,8 @@ export default function Analyze() {
             disabled={stage === 'uploading' || stage === 'analyzing'}
             style={{
               ...btnBase,
-              background: mode === m ? 'rgba(168,85,247,0.12)' : 'rgba(255,255,255,0.03)',
-              borderColor: mode === m ? 'rgba(168,85,247,0.2)' : 'transparent',
+              background: mode === m ? 'rgba(245,158,11,0.12)' : 'rgba(255,255,255,0.03)',
+              borderColor: mode === m ? 'rgba(245,158,11,0.2)' : 'transparent',
               color: mode === m ? 'var(--accent-light)' : 'var(--text-muted)',
               opacity: (stage === 'uploading' || stage === 'analyzing') ? 0.5 : 1,
             }}
@@ -297,7 +297,7 @@ export default function Analyze() {
                 textAlign: 'center',
                 transition: 'all 0.2s',
                 borderColor: isDragActive ? 'var(--accent)' : 'var(--border-subtle)',
-                background: isDragActive ? 'rgba(168,85,247,0.05)' : 'var(--bg-surface)',
+                background: isDragActive ? 'rgba(245,158,11,0.05)' : 'var(--bg-surface)',
                 opacity: (stage === 'uploading' || stage === 'analyzing') ? 0.5 : 1,
               }}
             >
@@ -356,7 +356,7 @@ export default function Analyze() {
                 style={{
                   ...btnBase,
                   padding: '12px 28px',
-                  background: 'linear-gradient(135deg, #a855f7, #7c3aed)',
+                  background: 'linear-gradient(135deg, #f59e0b, #d97706)',
                   color: '#fff',
                   opacity: (!manualFood.trim() || stage === 'uploading' || stage === 'analyzing') ? 0.4 : 1,
                   cursor: (!manualFood.trim() || stage === 'uploading' || stage === 'analyzing') ? 'not-allowed' : 'pointer',

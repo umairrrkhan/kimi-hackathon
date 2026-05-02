@@ -9,7 +9,7 @@ const card: React.CSSProperties = {
 }
 
 const gradientText: React.CSSProperties = {
-  background: 'linear-gradient(135deg, #a855f7, #6366f1)',
+  background: 'linear-gradient(135deg, #f59e0b, #d97706)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
@@ -21,7 +21,7 @@ const steps = [
     title: 'Upload Food Image',
     desc: 'Snap a photo of your meal or describe what you ate. The app accepts JPG, PNG, or WEBP files up to 10MB.',
     detail: 'Uses react-dropzone for drag-and-drop file upload with instant preview.',
-    color: '#a855f7',
+    color: '#f59e0b',
   },
   {
     num: '02',
@@ -86,8 +86,8 @@ export default function HowItWorks() {
             fontSize: '11px',
             fontWeight: 500,
             color: 'var(--accent-light)',
-            background: 'rgba(168,85,247,0.08)',
-            border: '1px solid rgba(168,85,247,0.1)',
+            background: 'rgba(245,158,11,0.08)',
+            border: '1px solid rgba(245,158,11,0.1)',
             marginBottom: '16px',
           }}
         >
@@ -328,7 +328,7 @@ export default function HowItWorks() {
             {
               title: 'Genetic Modulation',
               desc: 'FTO (rs9939609), APOE E4, TCF7L2, PPARG, and MTHFR variants scale glucose and insulin predictions by up to 30 percent.',
-              color: '#a855f7',
+              color: '#f59e0b',
             },
             {
               title: 'Glucose Modeling',
@@ -387,8 +387,8 @@ export default function HowItWorks() {
               fontWeight: 600,
               color: '#fff',
               textDecoration: 'none',
-              background: 'linear-gradient(135deg, #a855f7, #7c3aed)',
-              boxShadow: '0 4px 20px rgba(168,85,247,0.2)',
+              background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+              boxShadow: '0 4px 20px rgba(245,158,11,0.2)',
             }}
           >
             Analyze Food →
@@ -405,7 +405,7 @@ export default function HowItWorks() {
               fontWeight: 600,
               color: 'var(--accent-light)',
               textDecoration: 'none',
-              border: '1px solid rgba(168,85,247,0.2)',
+              border: '1px solid rgba(245,158,11,0.2)',
             }}
           >
             View Demo Simulation

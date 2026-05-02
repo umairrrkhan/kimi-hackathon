@@ -14,7 +14,7 @@ const cardStyle: React.CSSProperties = {
 }
 
 const gradientText: React.CSSProperties = {
-  background: 'linear-gradient(135deg, #a855f7, #6366f1)',
+  background: 'linear-gradient(135deg, #f59e0b, #d97706)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
@@ -41,7 +41,7 @@ const AGENTS = [
     id: 'genetic',
     label: 'Genetic Analysis Agent',
     desc: 'Scanning DNA markers and identifying variants',
-    color: '#a855f7',
+    color: '#f59e0b',
   },
   {
     id: 'impact',
@@ -313,8 +313,8 @@ export default function Genetics() {
             fontSize: '11px',
             fontWeight: 500,
             color: 'var(--accent-light)',
-            background: 'rgba(168,85,247,0.08)',
-            border: '1px solid rgba(168,85,247,0.1)',
+            background: 'rgba(245,158,11,0.08)',
+            border: '1px solid rgba(245,158,11,0.1)',
             marginBottom: '12px',
           }}
         >
@@ -342,9 +342,9 @@ export default function Genetics() {
                 borderRadius: '12px',
                 border: `1px dashed ${
                   stage === 'complete' ? 'rgba(52,211,153,0.3)' :
-                  fileName ? 'rgba(168,85,247,0.3)' : 'rgba(168,85,247,0.2)'
+                  fileName ? 'rgba(245,158,11,0.3)' : 'rgba(245,158,11,0.2)'
                 }`,
-                background: stage === 'complete' ? 'rgba(52,211,153,0.04)' : fileName ? 'rgba(168,85,247,0.06)' : 'rgba(168,85,247,0.04)',
+                background: stage === 'complete' ? 'rgba(52,211,153,0.04)' : fileName ? 'rgba(245,158,11,0.06)' : 'rgba(245,158,11,0.04)',
                 cursor: stage === 'analyzing' ? 'not-allowed' : 'pointer',
                 color: 'var(--text-muted)',
                 display: 'flex',
@@ -390,8 +390,8 @@ export default function Genetics() {
                     color: '#fff',
                     border: 'none',
                     cursor: 'pointer',
-                    background: 'linear-gradient(135deg, #a855f7, #7c3aed)',
-                    boxShadow: '0 4px 20px rgba(168,85,247,0.2)',
+                    background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+                    boxShadow: '0 4px 20px rgba(245,158,11,0.2)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -448,8 +448,8 @@ export default function Genetics() {
                     padding: '8px 12px',
                     borderRadius: '8px',
                     fontSize: '12px',
-                    background: 'rgba(168,85,247,0.04)',
-                    border: '1px solid rgba(168,85,247,0.06)',
+                    background: 'rgba(245,158,11,0.04)',
+                    border: '1px solid rgba(245,158,11,0.06)',
                   }}>
                     <div>
                       <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{m.gene}</span>
@@ -693,8 +693,8 @@ export default function Genetics() {
                     color: '#fff',
                     border: 'none',
                     cursor: 'pointer',
-                    background: 'linear-gradient(135deg, #a855f7, #7c3aed)',
-                    boxShadow: '0 2px 12px rgba(168,85,247,0.2)',
+                    background: 'linear-gradient(135deg, #f59e0b, #d97706)',
+                    boxShadow: '0 2px 12px rgba(245,158,11,0.2)',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '6px',
@@ -853,8 +853,8 @@ export default function Genetics() {
                 <div style={{
                   ...cardStyle,
                   textAlign: 'center',
-                  background: 'rgba(99,102,241,0.03)',
-                  border: '1px solid rgba(99,102,241,0.1)',
+                  background: 'rgba(245,158,11,0.03)',
+                  border: '1px solid rgba(245,158,11,0.1)',
                 }}>
                   <div style={{ fontSize: '10px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '4px' }}>
                     Top Concern
@@ -936,8 +936,8 @@ export default function Genetics() {
                           textAlign: 'left',
                           padding: '10px 14px',
                           borderRadius: '10px',
-                          border: `1px solid ${isAdded ? 'rgba(168,85,247,0.15)' : 'transparent'}`,
-                          background: isAdded ? 'rgba(168,85,247,0.06)' : 'rgba(255,255,255,0.02)',
+                          border: `1px solid ${isAdded ? 'rgba(245,158,11,0.15)' : 'transparent'}`,
+                          background: isAdded ? 'rgba(245,158,11,0.06)' : 'rgba(255,255,255,0.02)',
                           cursor: 'pointer',
                           display: 'flex',
                           justifyContent: 'space-between',
