@@ -1,35 +1,36 @@
-# What The Food (WTF)
+# Check Health AI
 
-> **AI-Powered Biological Simulation Platform** — See exactly what happens inside your body after every meal.
+> **AI-Powered Biological Simulation Platform** — Know exactly what your food does to your body.
 
 ---
 
 ## Overview
 
-What The Food is a cutting-edge biological simulation platform that uses AI image recognition and computational physiology to predict how food affects your body in real-time. Upload a photo of your meal or describe what you ate, and instantly receive a comprehensive 8-hour biological simulation covering glucose dynamics, insulin response, organ stress, and cognitive performance.
+Check Health AI is a cutting-edge biological simulation platform powered by **Kimi K2.6** (Moonshot AI). Upload a photo of your meal or describe what you ate, and instantly receive a comprehensive 8-hour biological simulation covering glucose dynamics, insulin response, organ stress, and cognitive performance — personalized to your DNA.
 
 ---
 
 ## Core Features
 
-### 1. AI Food Analysis
-- Upload food photos for instant AI recognition (powered by Kimi API / Moonshot)
-- Manual food entry with nutritional breakdown
-- Macronutrient estimation (calories, carbs, protein, fat)
+### 1. AI Food Analysis (Kimi K2.6)
+- Upload food photos for instant AI recognition via **Kimi K2.6 multimodal model**
+- Manual food entry with structured JSON nutritional breakdown
+- Macronutrient estimation (calories, carbs, protein, fat) + nutrient tags
 - Automatic glycemic index classification
 
 ### 2. 3D Body Simulation
-- Real-time 3D body visualization using Three.js
+- Real-time 3D body visualization using Three.js + React Three Fiber
 - Animated organ stress indicators with color-coded intensity
 - Pulsing energy pathways showing glucose/insulin dynamics
 - Interactive orbit controls for exploring the body map
 
 ### 3. Biological Prediction Engine
-- **Glucose Curve**: 8-hour blood glucose projection based on food composition
-- **Insulin Demand**: Pancreatic workload estimation
-- **Organ Stress**: Per-organ stress scoring (Pancreas, Liver, Heart, Kidneys, Brain, Stomach, Intestines, Immune System)
+- **Glucose Curve**: 8-hour blood glucose projection based on food composition + Kimi data
+- **Insulin Demand**: Pancreatic workload estimation with genetic modulation
+- **Organ Stress**: Per-organ scoring (Pancreas, Liver, Heart, Kidneys, Brain, Stomach, Intestines, Immune System)
 - **Cognitive Tracking**: Focus level and brain fog prediction over time
-- **Personalized Modifiers**: Adjusts for age, BMI, activity level, sleep, diabetic status
+- **Personalized Modifiers**: Adjusts for age, BMI, activity, sleep, diabetic status, genetic markers
+- **Predictive Timeline**: Combined multi-line chart with 4-phase breakdown (Digestion → Peak → Recovery → Baseline)
 
 ### 4. What-If Lab
 - Compare same meal across different physiological states:
@@ -37,22 +38,36 @@ What The Food is a cutting-edge biological simulation platform that uses AI imag
   - Sleep-Deprived
   - Post-Workout
   - Diabetic Profile
-- Side-by-side result comparison with peak value summaries
+- Kimi-powered nutritional analysis for each comparison
+- Side-by-side result comparison with peak value summaries + mini sparkline charts
 
-### 5. Genetic Integration
+### 5. Genetic Integration (Kimi-Powered)
 - Upload raw genetic data (23andMe/AncestryDNA format)
-- Parses known variants:
+- **Kimi K2.6 analyzes your DNA** and identifies food/metabolism-related variants
+- Detected markers include:
   - **FTO** (rs9939609) — Obesity risk, appetite regulation
   - **APOE** (ε4 variant) — Lipid metabolism, cognitive sensitivity
   - **TCF7L2** — Insulin secretion, type 2 diabetes risk
   - **PPARG** (Pro12Ala) — Insulin sensitivity modulation
   - **MTHFR** (C677T) — Methylation, detoxification
+- Risk-level badges (low / moderate / high) per variant
+- Risk distribution bar chart + donut proportion chart
+- Impact breakdown with animated progress bars
 - Genetic modifiers automatically scale glucose/insulin predictions
+- **PDF export** of full genetic analysis report
 
-### 6. PDF Export
-- Export complete simulation reports as PDF
+### 6. Advanced Analytics
+- SVG line charts with gradient fill for glucose, insulin, focus, brain fog
+- Animated organ stress progress bars
+- Risk distribution bar chart + donut chart for genetic variants
+- Combined predictive timeline overlay chart
+- Simple/Advanced toggle for organ stress display
+
+### 7. PDF Export
+- Export simulation reports as PDF (Profile page)
+- Export genetic analysis reports as PDF (Genetics page)
 - Includes: food analysis, peak values, organ stress chart, full prediction text
-- Clean, print-optimized formatting
+- Multi-page support for long content
 
 ---
 
@@ -63,12 +78,14 @@ What The Food is a cutting-edge biological simulation platform that uses AI imag
 | **Framework** | React 19 + TypeScript |
 | **Build Tool** | Vite 8 |
 | **Routing** | React Router 7 |
-| **Animation** | Framer Motion 12 |
+| **Animation** | Framer Motion 12 (scroll, parallax, layout animations) |
 | **3D Rendering** | Three.js + React Three Fiber + Drei |
-| **Styling** | Tailwind CSS 4 |
-| **State** | Zustand |
+| **Styling** | Tailwind CSS 4 + CSS custom properties |
+| **State** | Zustand 5 |
 | **PDF** | html2canvas + jsPDF |
-| **AI Vision** | Kimi API (Moonshot) |
+| **AI Vision** | Kimi K2.6 (Moonshot API) |
+| **File Upload** | react-dropzone |
+| **Forms** | react-hook-form |
 
 ---
 
@@ -76,29 +93,31 @@ What The Food is a cutting-edge biological simulation platform that uses AI imag
 
 ```
 src/
-├── main.tsx                  # Entry point
-├── App.tsx                   # Router configuration
-├── style.css                 # Tailwind imports + global styles
+├── main.tsx                       # Entry point
+├── App.tsx                        # Router configuration (7 routes)
+├── style.css                      # Tailwind + black/yellow theme CSS variables
 │
 ├── components/
-│   ├── Header.tsx            # Glass-morphism navigation header
-│   ├── PageTransition.tsx    # Framer motion page transitions
-│   └── BodyCanvas.tsx        # Three.js 3D body simulation canvas
+│   ├── Header.tsx                 # Fixed dark header with amber accents
+│   ├── PageTransition.tsx         # Framer motion page transitions
+│   ├── AgentsLoader.tsx           # Customizable agent loading animation
+│   └── BodyCanvas.tsx             # Three.js 3D body simulation canvas
 │
 ├── pages/
-│   ├── Home.tsx              # Landing page with feature showcase
-│   ├── Analyze.tsx           # Food photo upload + AI analysis
-│   ├── Simulation.tsx        # 3D body sim + charts + predictions
-│   ├── WhatIfLab.tsx         # Scenario comparison lab
-│   ├── Genetics.tsx          # Genetic data upload + variant browser
-│   └── Profile.tsx           # User parameters + PDF report export
+│   ├── Home.tsx                   # Landing page with ASCII art, stats, features
+│   ├── Analyze.tsx                # Food photo upload + Kimi AI analysis
+│   ├── Simulation.tsx             # 3D body + charts + predictive timeline
+│   ├── HowItWorks.tsx             # Compact expandable architecture guide
+│   ├── WhatIfLab.tsx              # Scenario comparison with Kimi analysis
+│   ├── Genetics.tsx               # DNA upload + Kimi analysis + charts + PDF
+│   └── Profile.tsx                # User parameters + PDF report export
 │
 ├── services/
-│   ├── kimiApi.ts            # Kimi/Moonshot API integration
-│   └── simulationEngine.ts   # Biological simulation algorithms
+│   ├── kimiApi.ts                 # Kimi K2.6 API (image, text, genetic analysis)
+│   └── simulationEngine.ts        # Multi-factor biological simulation algorithms
 │
 └── store/
-    └── simulationStore.ts    # Zustand global state
+    └── simulationStore.ts         # Zustand global state management
 ```
 
 ---
@@ -107,23 +126,26 @@ src/
 
 ### Colors
 - **Background**: `#000000` to `#0a0a0a` (deep black)
-- **Surface**: `#141414`, `#1a1a1a` (dark panels)
-- **Accent**: `#a855f7` (purple), `#6366f1` (indigo)
-- **Text**: `#e5e5e5` (primary), `#888` (muted)
-- **Stress Colors**: Red (glucose/organ), Amber (insulin), Cyan (brain), Pink (immune)
+- **Surface**: `#111111`, `#1a1a1a` (dark panels)
+- **Accent**: `#f59e0b` (amber), `#d97706` (dark amber), `#fbbf24` (light amber)
+- **Text**: `#f5f5f5` (primary), `#a1a1aa` (secondary), `#71717a` (muted)
+- **Status**: Red (glucose/stress), Amber (insulin), Emerald (stable), Pink (cognitive)
 
 ### Header
-- Fixed position with 16px top gap
-- `border-radius: 2rem` — fully curved left/right edges
-- Glass-morphism: `backdrop-filter: blur(24px)` + semi-transparent background
-- Purple border glow at 12% opacity
-- Radial gradient overlay for depth
-- Active nav link with animated sliding indicator
+- Fixed full-width dark bar with blur on scroll
+- Amber gradient logo badge
+- Active nav link with animated `layoutId` underline pill
+- Mobile responsive with animated expandable menu
 
 ### Typography
-- **Headings**: Inter, 800 weight, tight tracking
+- **Headings**: Inter, 800 weight, tight letter-spacing
 - **Body**: Inter, 300-500 weight
-- **Mono**: JetBrains Mono for data displays
+- **Mono**: JetBrains Mono for code/data displays
+
+### ASCII Design
+- Home page hero: ASCII "Check Health" logo
+- Home page CTA: ASCII "AI" art
+- Section dividers with ASCII line characters
 
 ---
 
@@ -145,22 +167,24 @@ npm run preview
 
 ## Configuration
 
-### Kimi API (Optional)
-For AI food analysis, provide your Moonshot API key:
+### Kimi API Key
+For AI food analysis and genetic analysis, provide your Moonshot API key:
 
-```
-# In the Analyze page, enter your key in the API field
-sk-...
+```env
+# In .env file
+VITE_KIMI_API_KEY=sk-your-key-here
 ```
 
-Without an API key, the app uses a local mock analyzer with realistic defaults.
+Get your key at [platform.moonshot.ai](https://platform.moonshot.ai/).
+
+The app proxies `/v1` to `https://api.moonshot.ai` via Vite config.
 
 ### Genetic Data Format
 Accepts standard 23andMe / AncestryDNA text exports:
 ```
-# Format:
-rsid    chromosome    position    genotype
-rs9939609    16    53820527    AA
+rsid       chromosome    position    genotype
+rs9939609  16            53820527    AA
+rs7903146  10            114758349   CT
 ```
 
 ---
@@ -172,23 +196,30 @@ The `simulationEngine.ts` uses a multi-factor physiological model:
 
 1. **Glycemic Classification**: Food → glycemic index + carb/fat/fiber load
 2. **Insulin Sensitivity**: Profile (age, BMI, activity, sleep, diabetes) → sensitivity factor
-3. **Genetic Modulation**: FTO, APOE, TCF7L2, PPARG variants → modifier multiplier
-4. **Glucose Curve**: Gaussian-based meal response with personalized scaling
+3. **Genetic Modulation**: FTO, APOE, TCF7L2, PPARG, MTHFR → modifier multiplier
+4. **Glucose Curve**: Gaussian-based meal response with Kimi-informed scaling
 5. **Insulin Response**: Pancreatic output proportional to glucose excursion
 6. **Organ Stress**: Rule-based scoring across 8 organ systems
-7. **Cognitive Model**: Focus/fog derived from glucose variability
+7. **Cognitive Model**: Focus/fog derived from glucose variability with sigmoid recovery
 8. **Narrative Prediction**: Natural language summary of all metrics
 
 ### Data Flow
 ```
-User Photo → Kimi API → Food Analysis
-                           ↓
+User Photo/Text → Kimi K2.6 API → Structured JSON (food name, macros, nutrients)
+                                       ↓
 User Profile + Genetic Data → Simulation Engine → Glucose/Insulin/Organ/Cognitive
-                           ↓
-                    3D Body Canvas + Charts + Prediction Text
-                           ↓
-                    PDF Export (Profile page)
+                                       ↓
+                         3D Body Canvas + SVG Charts + Prediction Text
+                                       ↓
+                     PDF Export (Profile) + Genetic PDF Export (Genetics)
 ```
+
+### AI Analysis Types
+| Type | Function | Input | Output |
+|------|----------|-------|--------|
+| Food (Image) | `analyzeFoodImage()` | base64 photo | foodName, macros, nutrients |
+| Food (Text) | `analyzeFoodText()` | food description | foodName, macros, nutrients |
+| Genetic | `analyzeGeneticData()` | raw DNA text | markers[], summary, overallRisk |
 
 ---
 
